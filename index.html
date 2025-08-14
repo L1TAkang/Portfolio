@@ -1,197 +1,192 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>랜덤 로또 번호 추첨기</title>
-    <style>
-        /* 페이지 전체 스타일 */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f2f5;
-            font-family: 'Pretendard', sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍀 행운의 로또 번호 추첨기</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 폰트 설정 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
 
+        /* 로또 공 애니메이션 */
+        .lotto-ball-enter {
+            animation: pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform: scale(0);
+        }
 
-        /* 전체 컨테이너 */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px; /* 요소 사이의 간격 */
-            background-color: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 28px;
-            color: #333;
-        }
+        @keyframes pop-in {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
+        /* 버튼 클릭 시 효과 */
+        #draw-button:active {
+            transform: scale(0.97);
+            transition: transform 0.1s ease-in-out;
+        }
 
-
-        /* 이름 입력창과 버튼을 묶는 영역 */
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 15px;
-        }
-
-
-        /* 이름 입력창 스타일 */
-        #name-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-
-        /* 추첨하기 버튼 스타일 */
-        #draw-button {
-            width: 100%;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-        }
-        
-        #draw-button:active {
-            transform: scale(0.98);
-        }
-
-
-        /* 번호가 표시될 영역 스타일 */
-        #lotto-numbers {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap; /* 화면이 작아지면 줄바꿈 */
-            justify-content: center;
-            height: 50px; /* 초기 높이 지정 */
-        }
-        
-        /* 각 번호 공 스타일 */
-        .lotto-ball {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-
-        /* 결과 메시지 스타일 */
-        #result-message {
-            font-size: 20px;
-            color: #333;
-            font-weight: 500;
-            text-align: center;
-            height: 30px; /* 초기 높이 지정 */
-        }
-        
-        #winner-name {
-            font-weight: bold;
-            color: #0056b3;
-        }
-
-
-    </style>
+        /* 이름 입력창 포커스 효과 */
+        #name-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center min-h-screen p-4">
 
+    <!-- 메인 컨테이너 -->
+    <div id="app-container" class="w-full max-w-md bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 space-y-6 transform transition-all duration-500">
+        
+        <!-- 헤더 -->
+        <header class="text-center">
+            <h1 class="text-4xl font-black text-gray-800">
+                🍀 행운의 로또
+            </h1>
+            <p class="text-gray-500 mt-2">당신의 이름을 입력하고 행운을 시험해보세요!</p>
+        </header>
 
-    <div class="container">
-        <h1>🍀 행운의 로또 번호</h1>
-        
-        <div class="input-group">
-            <input type="text" id="name-input" placeholder="이름을 입력하세요">
-            <button id="draw-button">번호 추첨하기</button>
-        </div>
+        <!-- 입력 그룹 -->
+        <div class="space-y-4">
+            <div>
+                <input type="text" id="name-input" placeholder="이름을 입력하세요" class="w-full px-5 py-3 text-center text-lg bg-white border-2 border-gray-200 rounded-xl transition-shadow duration-300">
+                <p id="error-message" class="text-red-500 text-sm text-center mt-2 h-5"></p>
+            </div>
+            <button id="draw-button" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300">
+                번호 추첨하기
+            </button>
+        </div>
 
+        <!-- 결과 표시 영역 -->
+        <div id="result-area" class="space-y-4 pt-4 border-t border-gray-200">
+            <!-- 로또 번호가 표시될 곳 -->
+            <div id="lotto-numbers" class="flex justify-center items-center gap-2 sm:gap-3 h-16">
+                 <!-- 로딩 또는 초기 메시지 -->
+                <p id="loading-message" class="text-gray-400 animate-pulse">추첨 버튼을 눌러주세요...</p>
+            </div>
+            
+            <!-- 결과 메시지 및 복사 버튼 -->
+            <div id="result-message-container" class="text-center h-16 flex flex-col items-center justify-center">
+                 <p id="result-message" class="text-lg text-gray-700 font-medium"></p>
+                 <button id="copy-button" class="hidden mt-2 px-4 py-1 bg-gray-200 text-gray-700 font-semibold rounded-full text-sm hover:bg-gray-300 transition-colors">
+                    번호 복사
+                 </button>
+            </div>
+        </div>
+    </div>
 
-        <div id="lotto-numbers"></div>
-        <p id="result-message"></p>
-    </div>
+    <script>
+        // DOM 요소 가져오기
+        const drawButton = document.getElementById('draw-button');
+        const nameInput = document.getElementById('name-input');
+        const errorMessage = document.getElementById('error-message');
+        const numbersDiv = document.getElementById('lotto-numbers');
+        const resultMessage = document.getElementById('result-message');
+        const loadingMessage = document.getElementById('loading-message');
+        const copyButton = document.getElementById('copy-button');
+        const resultMessageContainer = document.getElementById('result-message-container');
 
+        let generatedNumbers = [];
 
-    <script>
-        // JavaScript 코드
-        document.getElementById('draw-button').addEventListener('click', function() {
-            const name = document.getElementById('name-input').value;
+        // 로또 번호에 따른 공 색상을 결정하는 함수
+        const getBallColor = (number) => {
+            if (number <= 10) return 'bg-yellow-400'; // 노란색
+            if (number <= 20) return 'bg-blue-500';   // 파란색
+            if (number <= 30) return 'bg-red-500';     // 빨간색
+            if (number <= 40) return 'bg-gray-500';    // 회색
+            return 'bg-green-500';                     // 녹색
+        };
 
+        // 추첨 버튼 클릭 이벤트 리스너
+        drawButton.addEventListener('click', () => {
+            const name = nameInput.value.trim();
 
-            // 이름이 입력되지 않았으면 경고하고 함수 종료
-            if (name.trim() === '') {
-                alert('이름을 입력해주세요!');
-                return;
-            }
+            // 1. 이름 유효성 검사
+            if (name === '') {
+                errorMessage.textContent = '이름을 입력해주세요!';
+                nameInput.classList.add('border-red-500');
+                nameInput.focus();
+                return;
+            }
+            // 유효성 검사 통과 시 에러 메시지 초기화
+            errorMessage.textContent = '';
+            nameInput.classList.remove('border-red-500');
 
+            // 2. 추첨 시작 전 UI 초기화
+            numbersDiv.innerHTML = '';
+            resultMessage.innerHTML = '';
+            copyButton.classList.add('hidden');
+            loadingMessage.textContent = '번호를 추첨 중입니다...';
+            loadingMessage.classList.remove('hidden');
+            drawButton.disabled = true;
+            drawButton.textContent = '행운을 빌어요...';
 
-            // 1. 6개의 랜덤 번호 생성
-            const lottoNumbers = new Set(); // 중복을 허용하지 않는 Set 자료구조 사용
-            while (lottoNumbers.size < 6) {
-                const randomNumber = Math.floor(Math.random() * 45) + 1;
-                lottoNumbers.add(randomNumber);
-            }
+            // 3. 추첨 애니메이션을 위한 지연
+            setTimeout(() => {
+                // 4. 6개의 유니크한 랜덤 번호 생성
+                const lottoNumbers = new Set();
+                while (lottoNumbers.size < 6) {
+                    const randomNumber = Math.floor(Math.random() * 45) + 1;
+                    lottoNumbers.add(randomNumber);
+                }
+                
+                // Set을 배열로 변환하고 오름차순으로 정렬
+                generatedNumbers = Array.from(lottoNumbers).sort((a, b) => a - b);
 
+                // 5. 화면에 번호 표시 (애니메이션과 함께)
+                loadingMessage.classList.add('hidden');
+                generatedNumbers.forEach((number, index) => {
+                    setTimeout(() => {
+                        const ball = document.createElement('div');
+                        const colorClass = getBallColor(number);
+                        ball.className = `lotto-ball-enter w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-md ${colorClass}`;
+                        ball.textContent = number;
+                        numbersDiv.appendChild(ball);
+                    }, index * 200); // 0.2초 간격으로 공 표시
+                });
 
-            // Set을 배열로 변환하고 오름차순으로 정렬
-            const sortedNumbers = Array.from(lottoNumbers).sort((a, b) => a - b);
+                // 6. 모든 공이 표시된 후 결과 메시지 표시
+                setTimeout(() => {
+                    resultMessage.innerHTML = `🍀 <span class="font-bold text-indigo-600">${name}</span>님의 행운 번호입니다!`;
+                    copyButton.classList.remove('hidden');
+                    copyButton.textContent = '번호 복사';
+                    drawButton.disabled = false;
+                    drawButton.textContent = '다시 추첨하기';
+                }, generatedNumbers.length * 200);
 
+            }, 1000); // 1초 후 추첨 시작
+        });
+        
+        // 복사 버튼 클릭 이벤트 리스너
+        copyButton.addEventListener('click', () => {
+            const numbersText = generatedNumbers.join(', ');
+            // navigator.clipboard가 지원되지 않는 환경을 위한 대체 코드
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = numbersText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
 
-            // 2. 화면에 번호 표시하기
-            const numbersDiv = document.getElementById('lotto-numbers');
-            numbersDiv.innerHTML = ''; // 기존 번호 지우기
+            copyButton.textContent = '복사 완료!';
+            setTimeout(() => {
+                copyButton.textContent = '번호 복사';
+            }, 2000);
+        });
 
-
-            sortedNumbers.forEach(number => {
-                const ball = document.createElement('div');
-                ball.className = 'lotto-ball';
-                ball.textContent = number;
-                ball.style.backgroundColor = getBallColor(number);
-                numbersDiv.appendChild(ball);
-            });
-
-
-            // 3. 결과 메시지 표시하기
-            const resultP = document.getElementById('result-message');
-            resultP.innerHTML = `제 1140회 로또 행운의 주인공은 <span id="winner-name">${name}</span>님!`;
-        });
-
-
-        // 로또 번호에 따라 공 색상을 결정하는 함수
-        function getBallColor(number) {
-            if (number <= 10) return '#fbc400'; // 노란색
-            if (number <= 20) return '#69c8f2'; // 파란색
-            if (number <= 30) return '#ff7272'; // 빨간색
-            if (number <= 40) return '#aaa';    // 회색
-            return '#b0d840';                   // 녹색
-        }
-    </script>
+    </script>
 </body>
 </html>
