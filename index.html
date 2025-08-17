@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeoli Kim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pretendard (for Korean and English) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        /* 모든 요소에 Pretendard 폰트를 직접 적용합니다. */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+            font-family: 'Pretendard', sans-serif;
+        }
+        /* 모바일 메뉴 슬라이드 효과를 위한 CSS */
+        #mobile-menu-sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        #menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+
+    <!-- Header Section -->
+    <header class="bg-white sticky top-0 z-50">
+        <nav class="w-full px-6 sm:px-8 md:px-12 py-6 flex justify-between items-center">
+            <!-- Website Title -->
+            <a href="#" class="text-2xl font-normal text-black">Yeoli Kim</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#projects" class="text-xl text-black hover:text-gray-700 transition duration-300">Projects</a>
+                <a href="#about" class="text-xl text-black hover:text-gray-700 transition duration-300">About</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-open-btn" type="button" class="text-black hover:text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 12h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="menu-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50"></div>
+    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 h-full w-2/3 max-w-sm bg-white shadow-lg z-50 transform translate-x-full">
+        <div class="flex justify-end p-4">
+            <button id="menu-close-btn" class="text-black">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-start p-6 space-y-4">
+            <a href="#projects" class="text-lg text-black hover:text-gray-700">Projects</a>
+            <a href="#about" class="text-lg text-black hover:text-gray-700">About</a>
+        </nav>
+    </div>
+
+
+    <!-- Main Content Section -->
+    <main class="flex items-center justify-start text-left px-6 sm:px-8 md:px-12 pt-32 md:pt-40 pb-16 md:pb-20">
+        <div class="max-w-4xl">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-light leading-snug md:leading-snug lg:leading-tight">
+                솔로 프리너를 꿈꾸는 여리입니다. <br>늘 새로운 툴에 호기심이 많습니다.
+            </h1>
+        </div>
+    </main>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-white text-black px-6 sm:px-8 md:px-12 py-16">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-normal italic mb-12">Recent Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                
+                <!-- Project 1 -->
+                <div class="flex flex-col">
+                    <div class="relative h-[38rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" alt="Project 1 Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-start justify-between p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-3xl font-semibold text-white">Brand Identity Design</h3>
+                                <p class="text-xl text-gray-300 mb-4">2024</p>
+                                <p class="text-xl text-white">신규 뷰티 브랜드를 위한 로고, 패키지, 비주얼 아이덴티티 시스템을 구축했습니다.</p>
+                            </div>
+                            <a href="#project-1-detail" data-weblink="project-1.html" class="project-link text-xl text-white self-end underline hover:text-gray-300 transition-colors">More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="flex flex-col mt-0 md:mt-16">
+                    <div class="relative h-[38rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Project 2 Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                         <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-start justify-between p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-3xl font-semibold text-white">Web App Development</h3>
+                                <p class="text-xl text-gray-300 mb-4">2023</p>
+                                <p class="text-xl text-white">여행 계획 서비스를 위한 반응형 웹 애플리케이션의 프론트엔드 개발을 담당했습니다.</p>
+                            </div>
+                            <a href="#project-2-detail" data-weblink="project-2.html" class="project-link text-xl text-white self-end underline hover:text-gray-300 transition-colors">More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="flex flex-col">
+                    <div class="relative h-[38rem] overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop" alt="Project 3 Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                         <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-start justify-between p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div>
+                                <h3 class="text-3xl font-semibold text-white">Mobile UI/UX Redesign</h3>
+                                <p class="text-xl text-gray-300 mb-4">2022</p>
+                                <p class="text-xl text-white">기존 커머스 앱의 사용자 경험을 개선하기 위해 전체 UI/UX 리디자인을 진행했습니다.</p>
+                            </div>
+                            <a href="#project-3-detail" data-weblink="project-3.html" class="project-link text-xl text-white self-end underline hover:text-gray-300 transition-colors">More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Project Details -->
+            <div id="project-details-mobile" class="md:hidden mt-12 space-y-10">
+                <div id="project-1-detail" class="hidden project-detail-content p-6 bg-gray-100 rounded">
+                    <h3 class="text-2xl font-bold mb-2">Brand Identity Design</h3>
+                    <p class="text-gray-600 mb-4">Full details about Brand Identity Design project...</p>
+                </div>
+                <div id="project-2-detail" class="hidden project-detail-content p-6 bg-gray-100 rounded">
+                    <h3 class="text-2xl font-bold mb-2">Web App Development</h3>
+                    <p class="text-gray-600 mb-4">Full details about Web App Development project...</p>
+                </div>
+                <div id="project-3-detail" class="hidden project-detail-content p-6 bg-gray-100 rounded">
+                    <h3 class="text-2xl font-bold mb-2">Mobile UI/UX Redesign</h3>
+                    <p class="text-gray-600 mb-4">Full details about Mobile UI/UX Redesign project...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="bg-black text-white px-6 sm:px-8 md:px-12 py-24">
+        <div class="max-w-7xl mx-auto flex justify-center">
+            <div class="w-full max-w-2xl">
+                <!-- Work Experience -->
+                <div class="mb-16">
+                    <h3 class="text-2xl italic text-gray-400 mb-8">Work experience</h3>
+                    <div class="pl-4 space-y-10 text-xl">
+                        <div>
+                            <h4 class="font-semibold">Creative Studio</h4>
+                            <p class="text-gray-400">2021 - Present</p>
+                            <p class="leading-relaxed mt-3">
+                                다양한 클라이언트의 브랜딩 및 웹사이트 구축 프로젝트에 참여하여 디자인과 개발을 담당하고 있습니다.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Design Agency</h4>
+                            <p class="text-gray-400">2019 - 2021</p>
+                            <p class="leading-relaxed mt-3">
+                                주니어 디자이너로 근무하며 다수의 그래픽 디자인 및 편집 디자인 프로젝트를 수행했습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="mb-16">
+                    <h3 class="text-2xl italic text-gray-400 mb-8">Education</h3>
+                    <div class="pl-4 text-xl">
+                        <div>
+                            <p class="font-semibold">한국 디자인 대학교 / 디지털미디어디자인</p>
+                            <p class="text-gray-300">2015 - 2019</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Skills -->
+                <div>
+                    <h3 class="text-2xl italic text-gray-400 mb-8">Skills</h3>
+                    <div class="pl-4">
+                        <div class="text-xl space-y-3">
+                            <p># UI/UX Design</p>
+                            <p># Frontend Development</p>
+                            <p># Brand Strategy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const openBtn = document.getElementById('menu-open-btn');
+        const closeBtn = document.getElementById('menu-close-btn');
+        const sidebar = document.getElementById('mobile-menu-sidebar');
+        const overlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeMenu() {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore background scroll
+        }
+
+        openBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.classList.contains('project-link')) return; // project-link는 별도 처리
+                e.preventDefault();
+                closeMenu(); 
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if(targetElement) {
+                    setTimeout(() => {
+                         targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }
+            });
+        });
+
+        // Project link click handler
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth < 768) { // Mobile view
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    // 이미 열려있는지 확인
+                    const isAlreadyOpen = !targetElement.classList.contains('hidden');
+
+                    // 모든 상세 설명 숨기기
+                    document.querySelectorAll('.project-detail-content').forEach(detail => {
+                        detail.classList.add('hidden');
+                    });
+
+                    // 클릭한 것이 닫혀 있었다면 열기
+                    if (!isAlreadyOpen && targetElement) {
+                        targetElement.classList.remove('hidden');
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+                } else { // Desktop view
+                    e.preventDefault();
+                    window.location.href = this.dataset.weblink;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
