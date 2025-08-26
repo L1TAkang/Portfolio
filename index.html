@@ -27,12 +27,14 @@
 
     <!-- 모바일용 헤더 -->
     <header class="md:hidden fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-        <div class="w-full mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+        <div class="w-full mx-auto px-4 sm:px-6 flex items-center justify-between h-16 relative">
             <h1 class="text-2xl font-myeongjo tracking-wider">YEOLI</h1>
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <img src="https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?q=80&w=2070&auto=format=fit=crop" alt="Profile mobile image" class="w-10 h-10 object-cover rounded-full">
+            </div>
             <button id="mobile-menu-button" class="p-2 text-gray-600 hover:text-gray-900 focus:outline-none">
                 <span class="sr-only">메뉴 열기/닫기</span>
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
- 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
@@ -41,9 +43,9 @@
 
     <div class="md:flex">
         <!-- 사이드바 (경계선 제거) -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:z-30 w-64 bg-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col p-8">
+        <aside id="sidebar" class="fixed inset-y-0 right-0 z-50 md:z-30 md:left-0 w-64 bg-white transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col p-8">
             <!-- 닫기 버튼 (모바일용) -->
-            <div class="md:hidden text-right mb-4">
+            <div class="md:hidden text-left mb-4">
                 <button id="close-menu-button" class="p-2 text-gray-600 hover:text-gray-900">
                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -56,7 +58,7 @@
                 
                 <!-- 프로필 이미지 -->
                 <div class="w-full aspect-square bg-gray-200 overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?q=80&w=2070&auto=format&fit=crop" alt="Profile main banner" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?q=80&w=2070&auto=format=fit=crop" alt="Profile main banner" class="w-full h-full object-cover">
                 </div>
 
                 <!-- 네비게이션 메뉴 -->
@@ -78,8 +80,8 @@
                     
                     <!-- 프로젝트 아이템 1 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1556761175-b413da4b248d?q=80&w=2070&auto=format&fit=crop" alt="E-commerce user journey analysis" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4b248d?q=80&w=2070&auto=format&fit=crop" alt="E-commerce user journey analysis" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">이커머스 앱 사용자 여정 분석</h3>
                         <p class="text-xs text-gray-500 mt-1">2023.05 ~ 2023.07</p>
@@ -91,8 +93,8 @@
 
                     <!-- 프로젝트 아이템 2 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop" alt="Fintech service usability testing" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop" alt="Fintech service usability testing" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">핀테크 서비스 사용성 테스트</h3>
                         <p class="text-xs text-gray-500 mt-1">2023.01 ~ 2023.03</p>
@@ -104,8 +106,8 @@
 
                     <!-- 프로젝트 아이템 3 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" alt="Healthcare platform persona research" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" alt="Healthcare platform persona research" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">헬스케어 플랫폼 페르소나 연구</h3>
                         <p class="text-xs text-gray-500 mt-1">2022.09 ~ 2022.11</p>
@@ -117,8 +119,8 @@
 
                     <!-- 프로젝트 아이템 4 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop" alt="Social media feature A/B testing" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format=fit=crop" alt="Social media feature A/B testing" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">소셜 미디어 기능 A/B 테스트</h3>
                         <p class="text-xs text-gray-500 mt-1">2022.06 ~ 2022.07</p>
@@ -130,8 +132,8 @@
                     
                     <!-- 프로젝트 아이템 5 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1517842645767-c6f90415ad90?q=80&w=1974&auto=format&fit=crop" alt="Diary app user retention research" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1517842645767-c6f90415ad90?q=80&w=1974&auto=format&fit=crop" alt="Diary app user retention research" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">다이어리 앱 리텐션 증대 연구</h3>
                         <p class="text-xs text-gray-500 mt-1">2022.02 ~ 2022.04</p>
@@ -143,8 +145,8 @@
 
                     <!-- 프로젝트 아이템 6 -->
                     <div class="group">
-                        <div class="overflow-hidden bg-gray-100">
-                            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop" alt="Subscription service onboarding experience" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                        <div class="overflow-hidden bg-gray-100 aspect-[3/4]">
+                            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop" alt="Subscription service onboarding experience" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
                         </div>
                         <h3 class="text-base font-bold mt-4">구독 서비스 온보딩 경험 개선</h3>
                         <p class="text-xs text-gray-500 mt-1">2021.10 ~ 2021.12</p>
@@ -180,12 +182,12 @@
 
             // 모바일 메뉴 열기
             mobileMenuButton.addEventListener('click', () => {
-                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.remove('translate-x-full');
             });
 
             // 모바일 메뉴 닫기
             closeMenuButton.addEventListener('click', () => {
-                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.add('translate-x-full');
             });
 
             // 네비게이션 링크 클릭 (탭 전환)
@@ -207,7 +209,7 @@
                     this.classList.remove('text-gray-500');
 
                     if (window.innerWidth < 768) {
-                        sidebar.classList.add('-translate-x-full');
+                        sidebar.classList.add('translate-x-full');
                     }
                 });
             });
